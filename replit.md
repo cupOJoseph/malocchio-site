@@ -36,6 +36,14 @@ Preferred communication style: Simple, everyday language.
 - **Build Process**: Separate build steps for client (Vite) and server (esbuild)
 - **Development Server**: Vite dev server with Express API proxy
 
+## Deployment Configuration
+- **Deployment Type**: Currently configured as static deployment in `.replit` but supports both static and autoscale
+- **Build Output**: Vite builds frontend to `dist/public/`, server builds to `dist/index.js`
+- **Deployment Preparation**: `build-deploy.js` script creates compatible structure for both deployment types
+- **Static Deployment**: Files copied to `dist/` root for direct static serving
+- **Autoscale Deployment**: Express server serves files from `dist/public/` directory
+- **Production Server**: Runs on `NODE_ENV=production node dist/index.js`
+
 # External Dependencies
 
 ## Database
