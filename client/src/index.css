@@ -174,6 +174,13 @@
   z-index: 1000;
 }
 
+.emoji-explosion-gravity {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1000;
+  transition: none;
+}
+
 /* Custom animations */
 @keyframes sparkle {
   0% {
@@ -206,6 +213,20 @@
   }
   100% {
     transform: scale(0.5) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes emoji-gravity {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--velocity-x), calc(var(--velocity-y) + 500px)) rotate(360deg) scale(0.3);
     opacity: 0;
   }
 }
