@@ -66,18 +66,18 @@ export default function Home() {
       <main className="flex-1 flex flex-col items-center justify-center px-4 py-8">
         {/* Custom Eye of Nazar */}
         <div className="mb-8 relative" style={{ height: '75vmin', width: '75vmin', maxHeight: '400px', maxWidth: '400px' }}>
-          <div className="navy">
-            <div className="highlight"></div>
-            <div className="navy-shape"></div>
+          <div className="eye-nazar-navy">
+            <div className="eye-nazar-highlight"></div>
+            <div className="eye-nazar-navy-shape"></div>
           </div>
-          <div className="white"> 
-            <div className="white-shape"></div>
+          <div className="eye-nazar-white"> 
+            <div className="eye-nazar-white-shape"></div>
           </div>
-          <div className="blue">
-            <div className="blue-shape"></div>
+          <div className="eye-nazar-blue">
+            <div className="eye-nazar-blue-shape"></div>
           </div>
-          <div className="black">
-            <div className="black-shape"></div>
+          <div className="eye-nazar-black">
+            <div className="eye-nazar-black-shape"></div>
           </div>
           <div id="fa" style={{ height: '100%', width: '100%' }}></div>
         </div>
