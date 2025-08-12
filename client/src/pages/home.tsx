@@ -63,27 +63,102 @@ export default function Home() {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col items-center justify-center px-4 py-8">
-        {/* Custom Eye of Nazar */}
-        <div className="mb-8 relative" style={{ height: '75vmin', width: '75vmin', maxHeight: '400px', maxWidth: '400px' }}>
-          <div className="eye-nazar-navy">
-            <div className="eye-nazar-highlight"></div>
-            <div className="eye-nazar-navy-shape"></div>
+      <main className="flex-1 flex flex-col items-center justify-center px-4 py-12">
+        {/* Custom Eye of Nazar - Using inline styles to ensure production build */}
+        <div className="my-12 relative" style={{ height: '50vmin', width: '50vmin', maxHeight: '300px', maxWidth: '300px', minHeight: '200px', minWidth: '200px' }}>
+          {/* Navy outer layer */}
+          <div style={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}>
+            {/* Highlight effect */}
+            <div style={{
+              position: 'absolute',
+              top: '2vmin',
+              left: '9vmin',
+              zIndex: 1,
+              opacity: 0.9,
+              transform: 'rotate(13deg)',
+              width: '33vmin',
+              maxWidth: '200px',
+              minWidth: '130px',
+              aspectRatio: '1',
+              padding: '1.5vmin',
+              borderRadius: '50%',
+              background: '#ffffff'
+            }}></div>
+            {/* Navy shape */}
+            <div style={{
+              height: '50vmin',
+              width: '50vmin',
+              maxHeight: '300px',
+              maxWidth: '300px',
+              minHeight: '200px',
+              minWidth: '200px',
+              backgroundColor: '#04047c',
+              borderRadius: '49% 51% 50% 50% / 52% 52% 48% 48%',
+              transform: 'rotate(20deg)',
+              overflow: 'hidden',
+              position: 'relative'
+            }}>
+              {/* Shine animation */}
+              <div 
+                className="animate-shine"
+                style={{
+                  content: '',
+                  position: 'absolute',
+                  top: 0,
+                  left: '-100%',
+                  width: '100%',
+                  height: '100%',
+                  background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent)',
+                  animation: 'eye-shine 5s infinite'
+                }}
+              ></div>
+            </div>
           </div>
-          <div className="eye-nazar-white"> 
-            <div className="eye-nazar-white-shape"></div>
+          {/* White layer */}
+          <div style={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}>
+            <div style={{
+              height: '25vmin',
+              width: '25vmin',
+              maxHeight: '150px',
+              maxWidth: '150px',
+              minHeight: '100px',
+              minWidth: '100px',
+              backgroundColor: '#ffffff',
+              borderRadius: '44% 56% 50% 50% / 44% 48% 52% 56%',
+              transform: 'rotate(45deg)'
+            }}></div>
           </div>
-          <div className="eye-nazar-blue">
-            <div className="eye-nazar-blue-shape"></div>
+          {/* Blue layer */}
+          <div style={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}>
+            <div style={{
+              height: '15vmin',
+              width: '15vmin',
+              maxHeight: '90px',
+              maxWidth: '90px',
+              minHeight: '60px',
+              minWidth: '60px',
+              backgroundColor: '#a4dcfc',
+              borderRadius: '36% 64% 56% 44% / 44% 50% 50% 56%',
+              transform: 'rotate(45deg)'
+            }}></div>
           </div>
-          <div className="eye-nazar-black">
-            <div className="eye-nazar-black-shape"></div>
+          {/* Black center */}
+          <div style={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}>
+            <div style={{
+              height: '8vmin',
+              width: '8vmin',
+              maxHeight: '50px',
+              maxWidth: '50px',
+              minHeight: '32px',
+              minWidth: '32px',
+              backgroundColor: '#000',
+              borderRadius: '52% 48% 52% 48% / 56% 50% 50% 44%'
+            }}></div>
           </div>
-          <div id="fa" style={{ height: '100%', width: '100%' }}></div>
         </div>
 
         {/* Mint Button Below Eye */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-12">
           <button 
             onClick={handleMint}
             className="bg-gradient-to-r from-nazar-deep to-nazar-blue hover:from-nazar-blue hover:to-nazar-light text-white font-bold py-4 px-12 md:py-5 md:px-16 rounded-2xl text-lg md:text-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg active:scale-95 relative overflow-hidden"
