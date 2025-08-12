@@ -207,7 +207,7 @@ export default function Home() {
         <p>
           Hand Drawn by{" "}
           <a href="https://x.com/justalexty">
-            <u></u>Alex
+            <u>Alex</u>
           </a>
         </p>
         <p className="mt-2">
