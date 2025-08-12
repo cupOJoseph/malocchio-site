@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { emojiBlast } from 'emoji-blast';
 
 export default function Home() {
   const [mintCount, setMintCount] = useState(1247);
