@@ -208,3 +208,130 @@
 .animate-pulse-slow {
   animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
+
+/* Custom Eye of Nazar CSS Design */
+.navy,
+.white,
+.blue,
+.black {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.navy-shape {
+  height: 75vmin;
+  width: 75vmin;
+  background-color: #04047c;
+  border-radius: 49% 51% 50% 50% / 52% 52% 48% 48%;
+  transform: rotate(20deg);
+  overflow: hidden;
+}
+
+.navy-shape:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: shine 5s infinite;
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  20% {
+    left: 100%;
+  }
+  40% {
+    left: -100%;
+  }
+}
+
+.white-shape {
+  height: 37.5vmin;
+  width: 37.5vmin;
+  background-color: #ffffff;
+  border-radius: 44% 56% 50% 50% / 44% 48% 52% 56%;
+  transform: rotate(45deg);
+}
+
+.blue-shape {
+  height: 22.5vmin;
+  width: 22.5vmin;
+  background-color: #a4dcfc;
+  border-radius: 36% 64% 56% 44% / 44% 50% 50% 56%;
+  transform: rotate(45deg);
+}
+
+.black-shape {
+  height: 12.5vmin;
+  width: 12.5vmin;
+  background-color: #000;
+  border-radius: 52% 48% 52% 48% / 56% 50% 50% 44%;
+}
+
+/* https://css-shape.com/arc/ */
+.highlight {
+  --b: 2vmin; /* border thickness */
+  --a: 40deg; /* progression control */
+
+  position: absolute;
+  top: 3vmin;
+  left: 14vmin;
+  z-index: 1;
+  opacity: 0.9;
+  transform: rotate(13deg);
+
+  width: 50vmin;
+  aspect-ratio: 1;
+  padding: var(--b);
+  border-radius: 50%;
+  background: #ffffff;
+  --_g: / var(--b) var(--b) no-repeat radial-gradient(circle at 50% 50%, #000 97%, #0000);
+  mask: top var(--_g),
+    calc(50% + 50% * sin(var(--a))) calc(50% - 50% * cos(var(--a))) var(--_g),
+    linear-gradient(#0000 0 0) content-box intersect,
+    conic-gradient(#000 var(--a), #0000 0);
+}
+
+/* Center button styling for custom eye */
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.myButton {
+  z-index: 10;
+  background: linear-gradient(135deg, #1E40AF, #3B82F6);
+  color: white;
+  font-weight: bold;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 20px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+}
+
+.myButton:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+  box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
+}
+
+.myButton:active {
+  transform: translate(-50%, -50%) scale(0.95);
+}

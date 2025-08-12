@@ -37,7 +37,7 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-gray-50 font-inter min-h-screen">
+    <div className="font-inter min-h-screen" style={{ background: '#e4f0fc' }}>
       {/* Navigation */}
       <nav className="pt-6 pb-2">
         <div className="max-w-6xl mx-auto px-4 flex justify-between items-center">
@@ -64,88 +64,35 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center justify-center px-4 py-8">
-        {/* Nazar Circle */}
-        <div className="mb-12 animate-float">
-          <svg
-            className="nazar-circle transition-transform duration-300 hover:scale-105"
-            width="300"
-            height="300"
-            viewBox="0 0 300 300"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            {/* Outer circle - light blue */}
-            <circle
-              cx="150"
-              cy="150"
-              r="140"
-              fill="#DBEAFE"
-              stroke="#3B82F6"
-              strokeWidth="4"
-            />
-
-            {/* Middle circle - medium blue */}
-            <circle cx="150" cy="150" r="100" fill="#60A5FA" />
-
-            {/* Inner circle - darker blue */}
-            <circle cx="150" cy="150" r="60" fill="#1E40AF" />
-
-            {/* Pupil - white */}
-            <circle cx="150" cy="150" r="25" fill="white" />
-
-            {/* Center dot - dark blue */}
-            <circle cx="150" cy="150" r="8" fill="#1E40AF" />
-
-            {/* Mystical rays */}
-            <g stroke="#3B82F6" strokeWidth="2" opacity="0.6">
-              <line x1="150" y1="10" x2="150" y2="40" strokeLinecap="round" />
-              <line x1="150" y1="260" x2="150" y2="290" strokeLinecap="round" />
-              <line x1="10" y1="150" x2="40" y2="150" strokeLinecap="round" />
-              <line x1="260" y1="150" x2="290" y2="150" strokeLinecap="round" />
-              <line
-                x1="61.2"
-                y1="61.2"
-                x2="82.8"
-                y2="82.8"
-                strokeLinecap="round"
-              />
-              <line
-                x1="217.2"
-                y1="217.2"
-                x2="238.8"
-                y2="238.8"
-                strokeLinecap="round"
-              />
-              <line
-                x1="238.8"
-                y1="61.2"
-                x2="217.2"
-                y2="82.8"
-                strokeLinecap="round"
-              />
-              <line
-                x1="82.8"
-                y1="217.2"
-                x2="61.2"
-                y2="238.8"
-                strokeLinecap="round"
-              />
-            </g>
-
-            {/* Animated pulse ring */}
-            <circle
-              cx="150"
-              cy="150"
-              r="120"
-              fill="none"
-              stroke="#60A5FA"
-              strokeWidth="1"
-              opacity="0.3"
-              className="animate-pulse-slow"
-            />
-          </svg>
+        {/* Custom Eye of Nazar */}
+        <div className="mb-12 relative" style={{ height: '75vmin', width: '75vmin', maxHeight: '400px', maxWidth: '400px' }}>
+          <div className="navy">
+            <div className="highlight"></div>
+            <div className="navy-shape"></div>
+          </div>
+          <div className="white"> 
+            <div className="white-shape"></div>
+          </div>
+          <div className="blue">
+            <div className="blue-shape"></div>
+          </div>
+          <div className="black">
+            <div className="black-shape"></div>
+          </div>
+          <div>
+            <button 
+              id="btn" 
+              className="center myButton"
+              onClick={handleMint}
+              disabled={mintCount >= maxMints}
+            >
+              {mintCount >= maxMints ? "Sold Out" : "Mint 🧿"}
+            </button>
+          </div>
+          <div id="fa" style={{ height: '100%', width: '100%' }}></div>
         </div>
 
-        {/* Mint Section */}
+        {/* Mint Info Section */}
         <div className="text-center mb-8">
           <div className="mb-6">
             <span className="text-2xl md:text-3xl font-semibold text-gray-800">
@@ -157,15 +104,6 @@ export default function Home() {
             </span>
             <p className="text-sm text-gray-500 mt-1 font-medium">MINTED</p>
           </div>
-
-          {/* Mint Button with sparkle effect */}
-          <button
-            onClick={handleMint}
-            className="sparkle-effect bg-gradient-to-r from-nazar-deep to-nazar-blue hover:from-nazar-blue hover:to-nazar-light text-white font-bold py-4 px-12 md:py-5 md:px-16 rounded-2xl text-lg md:text-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg active:scale-95 relative overflow-hidden"
-            disabled={mintCount >= maxMints}
-          >
-            🧿 {mintCount >= maxMints ? "Sold Out" : "Mint Your Nazar"} 🧿
-          </button>
 
           <p className="text-sm text-gray-500 mt-4 max-w-md mx-auto">
             {mintCount >= maxMints
