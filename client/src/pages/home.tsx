@@ -24,15 +24,15 @@ export default function Home() {
       emojiElement.style.position = 'fixed';
       emojiElement.style.left = x + 'px';
       emojiElement.style.top = y + 'px';
-      emojiElement.style.fontSize = (1 + Math.random() * 0.8) + 'rem'; // Varying sizes
+      emojiElement.style.fontSize = (2 + Math.random() * 1.6) + 'rem'; // Twice as big with variation
       emojiElement.style.pointerEvents = 'none';
       emojiElement.style.zIndex = '1000';
       
-      // Random initial velocity
-      const angle = Math.random() * 2 * Math.PI;
-      const velocity = 150 + Math.random() * 100; // Initial velocity
+      // Random initial velocity - biased upward
+      const angle = (Math.random() * Math.PI) + Math.PI; // Only upward angles (π to 2π)
+      const velocity = 200 + Math.random() * 150; // Stronger initial velocity
       const velocityX = Math.cos(angle) * velocity;
-      const velocityY = Math.sin(angle) * velocity - 100; // Upward bias
+      const velocityY = Math.sin(angle) * velocity - 200; // Strong upward bias
       
       emojiElement.style.setProperty('--velocity-x', velocityX + 'px');
       emojiElement.style.setProperty('--velocity-y', velocityY + 'px');
