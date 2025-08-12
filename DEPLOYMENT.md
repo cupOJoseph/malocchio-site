@@ -10,6 +10,9 @@ This application supports both **Static** and **Autoscale** deployment methods o
 
 ## Deployment Process
 
+### Important: Always Rebuild Before Deploying
+When you make code changes (like adding wallet functionality), you MUST rebuild before deploying:
+
 ### 1. Build the Application
 ```bash
 npm run build
@@ -17,6 +20,7 @@ npm run build
 This creates:
 - `dist/index.js` - Express server
 - `dist/public/` - Frontend files (React app)
+- All new features and changes are included
 
 ### 2. Prepare for Deployment
 ```bash
@@ -26,6 +30,7 @@ This script:
 - Copies `index.html` to `dist/` root for static deployment compatibility
 - Copies `assets/` directory to `dist/` root for static deployment compatibility
 - Maintains `dist/public/` structure for autoscale deployment compatibility
+- **CRITICAL**: This step ensures your latest changes appear in deployment
 
 ### 3. Final Structure
 ```
@@ -72,10 +77,27 @@ Required for production:
 - Switch to autoscale deployment for full functionality
 
 ## Manual Deployment Steps
-1. Run `npm run build`
-2. Run `node build-deploy.js`
-3. Click "Deploy" in Replit
-4. Your application will be available at the generated URL
+**IMPORTANT**: After making any code changes, follow these steps:
+
+1. **Build**: `npm run build`
+2. **Prepare**: `node build-deploy.js`
+3. **Deploy**: Click "Deploy" in Replit
+4. Your application with all latest changes will be available at the generated URL
+
+## Troubleshooting Deployment Issues
+
+### Changes Not Showing in Deployed Version
+**Problem**: Your wallet changes or manual edits aren't appearing in the deployed site.
+
+**Solution**: 
+1. Always run `npm run build` after making changes
+2. Run `node build-deploy.js` to prepare deployment files
+3. Then deploy - this ensures the build includes your latest code
+
+### Build Process
+- The build process compiles all React components, including new wallet functionality
+- Skipping the build step means deployment uses old cached files
+- The preparation script ensures compatibility with both static and autoscale deployments
 
 ## Notes
 - Static deployment only serves the frontend
