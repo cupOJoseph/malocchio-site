@@ -65,7 +65,7 @@ export default function Home() {
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center justify-center px-4 py-8">
         {/* Custom Eye of Nazar */}
-        <div className="mb-12 relative" style={{ height: '75vmin', width: '75vmin', maxHeight: '400px', maxWidth: '400px' }}>
+        <div className="mb-8 relative" style={{ height: '75vmin', width: '75vmin', maxHeight: '400px', maxWidth: '400px' }}>
           <div className="navy">
             <div className="highlight"></div>
             <div className="navy-shape"></div>
@@ -79,17 +79,18 @@ export default function Home() {
           <div className="black">
             <div className="black-shape"></div>
           </div>
-          <div>
-            <button 
-              id="btn" 
-              className="center myButton"
-              onClick={handleMint}
-              disabled={mintCount >= maxMints}
-            >
-              {mintCount >= maxMints ? "Sold Out" : "Mint 🧿"}
-            </button>
-          </div>
           <div id="fa" style={{ height: '100%', width: '100%' }}></div>
+        </div>
+
+        {/* Mint Button Below Eye */}
+        <div className="text-center mb-8">
+          <button 
+            onClick={handleMint}
+            className="bg-gradient-to-r from-nazar-deep to-nazar-blue hover:from-nazar-blue hover:to-nazar-light text-white font-bold py-4 px-12 md:py-5 md:px-16 rounded-2xl text-lg md:text-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg active:scale-95 relative overflow-hidden"
+            disabled={mintCount >= maxMints}
+          >
+            🧿 {mintCount >= maxMints ? "Sold Out" : "Mint Your Nazar"} 🧿
+          </button>
         </div>
 
         {/* Mint Info Section */}
