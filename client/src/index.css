@@ -167,19 +167,7 @@
   animation: sparkle 0.6s ease-in-out infinite alternate;
 }
 
-.emoji-explosion {
-  position: fixed;
-  pointer-events: none;
-  font-size: 1.5rem;
-  z-index: 1000;
-}
-
-.emoji-explosion-gravity {
-  position: fixed;
-  pointer-events: none;
-  z-index: 1000;
-  transition: none;
-}
+/* Emoji explosion styles removed - using emoji-blast library */
 
 /* Custom animations */
 @keyframes sparkle {
@@ -202,34 +190,7 @@
   }
 }
 
-@keyframes emoji-burst {
-  0% {
-    transform: scale(0) rotate(0deg);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.5) rotate(180deg);
-    opacity: 0.8;
-  }
-  100% {
-    transform: scale(0.5) rotate(360deg);
-    opacity: 0;
-  }
-}
-
-@keyframes emoji-gravity {
-  0% {
-    transform: translate(0, 0) rotate(0deg) scale(1);
-    opacity: 1;
-  }
-  25% {
-    opacity: 1;
-  }
-  100% {
-    transform: translate(var(--velocity-x), calc(var(--velocity-y) + 500px)) rotate(360deg) scale(0.3);
-    opacity: 0;
-  }
-}
+/* Old emoji animation keyframes removed - using emoji-blast library */
 
 @keyframes pulse-slow {
   0%, 100% {

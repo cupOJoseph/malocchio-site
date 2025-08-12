@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { emojiBlast, emojiBlasts } from 'emoji-blast';
 
 export default function Home() {
   const [mintCount, setMintCount] = useState(1247);
@@ -7,47 +8,18 @@ export default function Home() {
   // Global click handler for emoji explosion effect
   useEffect(() => {
     const handleGlobalClick = (e: MouseEvent) => {
-      createEmojiExplosion(e.clientX, e.clientY);
+      emojiBlast({
+        emojis: ['🧿'],
+        position: {
+          x: e.clientX,
+          y: e.clientY
+        }
+      });
     };
 
     document.addEventListener('click', handleGlobalClick);
     return () => document.removeEventListener('click', handleGlobalClick);
   }, []);
-
-  const createEmojiExplosion = (x: number, y: number) => {
-    const emojiCount = 10 + Math.floor(Math.random() * 6); // 10-15 emojis
-    
-    for (let i = 0; i < emojiCount; i++) {
-      const emojiElement = document.createElement('div');
-      emojiElement.textContent = '🧿';
-      emojiElement.className = 'emoji-explosion-gravity';
-      emojiElement.style.position = 'fixed';
-      emojiElement.style.left = x + 'px';
-      emojiElement.style.top = y + 'px';
-      emojiElement.style.fontSize = (2 + Math.random() * 1.6) + 'rem'; // Twice as big with variation
-      emojiElement.style.pointerEvents = 'none';
-      emojiElement.style.zIndex = '1000';
-      
-      // Random initial velocity - biased upward
-      const angle = (Math.random() * Math.PI) + Math.PI; // Only upward angles (π to 2π)
-      const velocity = 200 + Math.random() * 150; // Stronger initial velocity
-      const velocityX = Math.cos(angle) * velocity;
-      const velocityY = Math.sin(angle) * velocity - 200; // Strong upward bias
-      
-      emojiElement.style.setProperty('--velocity-x', velocityX + 'px');
-      emojiElement.style.setProperty('--velocity-y', velocityY + 'px');
-      emojiElement.style.animation = 'emoji-gravity 3s ease-out forwards';
-      
-      document.body.appendChild(emojiElement);
-      
-      // Remove the emoji after animation
-      setTimeout(() => {
-        if (emojiElement.parentNode) {
-          emojiElement.parentNode.removeChild(emojiElement);
-        }
-      }, 3000);
-    }
-  };
 
   const handleMint = (e: React.MouseEvent) => {
     // Mock minting functionality
@@ -55,16 +27,12 @@ export default function Home() {
       setMintCount(prev => prev + 1);
     }
     
-    // Create enhanced explosion for mint button clicks
-    createEmojiExplosion(e.clientX, e.clientY);
-    
-    // Add a second burst with slight delay for extra effect
-    setTimeout(() => {
-      createEmojiExplosion(
-        e.clientX + (Math.random() - 0.5) * 50,
-        e.clientY + (Math.random() - 0.5) * 50
-      );
-    }, 150);
+    // Create continuous emoji blasts for mint button
+    const { cancel } = emojiBlasts({
+      emojis: ['🧿', '✨', '🌟', '💎', '🔮', '🎉', '⭐'],
+      interval: 40
+    });
+    setTimeout(cancel, 3000);
   };
 
   return (
