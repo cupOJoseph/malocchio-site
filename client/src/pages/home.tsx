@@ -94,7 +94,7 @@ export default function Home() {
         </div>
 
         {/* Mint Info Section */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-12 relative z-20">
           <div className="mb-6">
             <span className="text-2xl md:text-3xl font-semibold text-gray-800">
               {mintCount.toLocaleString()}
