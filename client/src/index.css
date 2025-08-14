@@ -209,98 +209,89 @@
   animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-/* Custom Eye of Nazar CSS Design - Global styles for production build */
-.eye-nazar-navy,
-.eye-nazar-white,
-.eye-nazar-blue,
-.eye-nazar-black {
-  position: absolute !important;
-  left: 50% !important;
-  top: 50% !important;
-  -webkit-transform: translate(-50%, -50%) !important;
-  transform: translate(-50%, -50%) !important;
-}
+/* Custom Eye of Nazar CSS Design - Using @layer to ensure inclusion */
+@layer components {
+  .eye-nazar-navy,
+  .eye-nazar-white,
+  .eye-nazar-blue,
+  .eye-nazar-black {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
 
-.eye-nazar-navy-shape {
-  height: 50vmin !important;
-  width: 50vmin !important;
-  max-height: 300px !important;
-  max-width: 300px !important;
-  min-height: 200px !important;
-  min-width: 200px !important;
-  background-color: #04047c !important;
-  border-radius: 49% 51% 50% 50% / 52% 52% 48% 48% !important;
-  transform: rotate(20deg) !important;
-  overflow: hidden !important;
-}
+  .eye-nazar-navy-shape {
+    height: 75vmin;
+    width: 75vmin;
+    background-color: #04047c;
+    border-radius: 49% 51% 50% 50% / 52% 52% 48% 48%;
+    transform: rotate(20deg);
+    overflow: hidden;
+  }
 
-.eye-nazar-navy-shape:before {
-  content: "" !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: -100% !important;
-  width: 100% !important;
-  height: 100% !important;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.3),
-    transparent
-  ) !important;
-  animation: eye-shine 5s infinite !important;
-}
+  .eye-nazar-navy-shape:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    animation: eye-shine 5s infinite;
+  }
 
-.eye-nazar-white-shape {
-  height: 25vmin !important;
-  width: 25vmin !important;
-  max-height: 150px !important;
-  max-width: 150px !important;
-  min-height: 100px !important;
-  min-width: 100px !important;
-  background-color: #ffffff !important;
-  border-radius: 44% 56% 50% 50% / 44% 48% 52% 56% !important;
-  transform: rotate(45deg) !important;
-}
+  .eye-nazar-white-shape {
+    height: 37.5vmin;
+    width: 37.5vmin;
+    background-color: #ffffff;
+    border-radius: 44% 56% 50% 50% / 44% 48% 52% 56%;
+    transform: rotate(45deg);
+  }
 
-.eye-nazar-blue-shape {
-  height: 15vmin !important;
-  width: 15vmin !important;
-  max-height: 90px !important;
-  max-width: 90px !important;
-  min-height: 60px !important;
-  min-width: 60px !important;
-  background-color: #a4dcfc !important;
-  border-radius: 36% 64% 56% 44% / 44% 50% 50% 56% !important;
-  transform: rotate(45deg) !important;
-}
+  .eye-nazar-blue-shape {
+    height: 22.5vmin;
+    width: 22.5vmin;
+    background-color: #a4dcfc;
+    border-radius: 36% 64% 56% 44% / 44% 50% 50% 56%;
+    transform: rotate(45deg);
+  }
 
-.eye-nazar-black-shape {
-  height: 8vmin !important;
-  width: 8vmin !important;
-  max-height: 50px !important;
-  max-width: 50px !important;
-  min-height: 32px !important;
-  min-width: 32px !important;
-  background-color: #000 !important;
-  border-radius: 52% 48% 52% 48% / 56% 50% 50% 44% !important;
-}
+  .eye-nazar-black-shape {
+    height: 12.5vmin;
+    width: 12.5vmin;
+    background-color: #000;
+    border-radius: 52% 48% 52% 48% / 56% 50% 50% 44%;
+  }
 
-.eye-nazar-highlight {
-  --eye-nazar-b: 1.5vmin;
-  --eye-nazar-a: 40deg;
-  position: absolute !important;
-  top: 2vmin !important;
-  left: 9vmin !important;
-  z-index: 1 !important;
-  opacity: 0.9 !important;
-  transform: rotate(13deg) !important;
-  width: 33vmin !important;
-  max-width: 200px !important;
-  min-width: 130px !important;
-  aspect-ratio: 1 !important;
-  padding: var(--eye-nazar-b) !important;
-  border-radius: 50% !important;
-  background: #ffffff !important;
+  .eye-nazar-highlight {
+    --b: 2vmin; /* border thickness */
+    --a: 40deg; /* progression control */
+
+    position: absolute;
+    top: 3vmin;
+    left: 14vmin;
+    z-index: 1;
+    opacity: 0.9;
+    transform: rotate(13deg);
+
+    width: 50vmin;
+    aspect-ratio: 1;
+    padding: var(--b);
+    border-radius: 50%;
+    background: #ffffff;
+    --_g: / var(--b) var(--b) no-repeat radial-gradient(circle at 50% 50%, #000 97%, #0000);
+    mask: top var(--_g),
+      calc(50% + 50% * sin(var(--a))) calc(50% - 50% * cos(var(--a))) var(--_g),
+      linear-gradient(#0000 0 0) content-box intersect,
+      conic-gradient(#000 var(--a), #0000 0);
+  }
 }
 
 @keyframes eye-shine {
