@@ -113,32 +113,7 @@ export default function Home() {
           </p>
         </div>
 
-        {/* Features */}
-        <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mt-12">
-          <div className="text-center p-6 bg-white rounded-xl shadow-sm border border-nazar-tint">
-            <div className="text-3xl mb-3">🛡️</div>
-            <h3 className="font-semibold text-gray-800 mb-2">Protection</h3>
-            <p className="text-sm text-gray-600">
-              Ancient symbol of protection against negative energy
-            </p>
-          </div>
 
-          <div className="text-center p-6 bg-white rounded-xl shadow-sm border border-nazar-tint">
-            <div className="text-3xl mb-3">✨</div>
-            <h3 className="font-semibold text-gray-800 mb-2">Unique Art</h3>
-            <p className="text-sm text-gray-600">
-              Hand-crafted digital art with mystical properties
-            </p>
-          </div>
-
-          <div className="text-center p-6 bg-white rounded-xl shadow-sm border border-nazar-tint">
-            <div className="text-3xl mb-3">🌟</div>
-            <h3 className="font-semibold text-gray-800 mb-2">Access</h3>
-            <p className="text-sm text-gray-600">
-              Join our coven of protection seekers
-            </p>
-          </div>
-        </div>
       </main>
 
       {/* Footer */}
