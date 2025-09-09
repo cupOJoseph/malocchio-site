@@ -41,9 +41,7 @@ export default function Home() {
       {/* Navigation */}
       <nav className="pt-6 pb-2">
         <div className="max-w-6xl mx-auto px-4 flex justify-between items-center">
-          <div className="text-2xl font-bold text-nazar-deep">
-            🧿 Eye of Nazar
-          </div>
+          <div className="text-2xl font-bold text-nazar-deep">Malocchio 🧿</div>
           <WalletButton />
         </div>
       </nav>
@@ -52,7 +50,7 @@ export default function Home() {
       <header className="pt-4 pb-4">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold gradient-text mb-4">
-            Eye of Nazar NFTs 🧿
+            PROTECT YOUR BAGS: Mint a Malocchio
           </h1>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Discover the mystical power of protection with our exclusive
