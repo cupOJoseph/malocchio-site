@@ -37,11 +37,13 @@ export default function Home() {
   };
 
   return (
-    <div className="font-inter min-h-screen" style={{ background: "#e4f0fc" }}>
+    <div className="font-inter min-h-screen" style={{ background: '#e4f0fc' }}>
       {/* Navigation */}
       <nav className="pt-6 pb-2">
         <div className="max-w-6xl mx-auto px-4 flex justify-between items-center">
-          <div className="text-2xl font-bold text-nazar-deep">Malocchio 🧿</div>
+          <div className="text-2xl font-bold text-nazar-deep">
+            🧿 Eye of Nazar
+          </div>
           <WalletButton />
         </div>
       </nav>
@@ -50,7 +52,7 @@ export default function Home() {
       <header className="pt-4 pb-4">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold gradient-text mb-4">
-            PROTECT YOUR BAGS: Mint a Malocchio
+            Eye of Nazar NFTs 🧿
           </h1>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Discover the mystical power of protection with our exclusive
@@ -63,20 +65,12 @@ export default function Home() {
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center justify-center px-4 py-8">
         {/* Custom Eye of Nazar */}
-        <div
-          className="mb-8 relative"
-          style={{
-            height: "75vmin",
-            width: "75vmin",
-            maxHeight: "25%",
-            maxWidth: "350px",
-          }}
-        >
+        <div className="mb-8 relative" style={{ height: '75vmin', width: '75vmin', maxHeight: '350px', maxWidth: '350px' }}>
           <div className="eye-nazar-navy">
             <div className="eye-nazar-highlight"></div>
             <div className="eye-nazar-navy-shape"></div>
           </div>
-          <div className="eye-nazar-white">
+          <div className="eye-nazar-white"> 
             <div className="eye-nazar-white-shape"></div>
           </div>
           <div className="eye-nazar-blue">
@@ -85,12 +79,12 @@ export default function Home() {
           <div className="eye-nazar-black">
             <div className="eye-nazar-black-shape"></div>
           </div>
-          <div id="fa" style={{ height: "100%", width: "100%" }}></div>
+          <div id="fa" style={{ height: '100%', width: '100%' }}></div>
         </div>
 
         {/* Mint Button Below Eye */}
         <div className="text-center mb-8">
-          <button
+          <button 
             onClick={handleMint}
             className="bg-gradient-to-r from-nazar-deep to-nazar-blue hover:from-nazar-blue hover:to-nazar-light text-white font-bold py-4 px-12 md:py-5 md:px-16 rounded-2xl text-lg md:text-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg active:scale-95 relative overflow-hidden"
             disabled={mintCount >= maxMints}
@@ -118,6 +112,8 @@ export default function Home() {
               : "Connect your wallet to mint your Eye of Nazar NFT. Each token grants access to exclusive mystical benefits."}
           </p>
         </div>
+
+
       </main>
 
       {/* Footer */}
