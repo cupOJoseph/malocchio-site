@@ -15,33 +15,33 @@ export default function Home() {
   // Carousel setup
   const [emblaRef] = useEmblaCarousel({
     loop: true,
-    align: 'center',
-    containScroll: 'trimSnaps',
-    dragFree: true
+    align: "center",
+    containScroll: "trimSnaps",
+    dragFree: true,
   });
 
   // Sample NFT images - replace with actual images when uploaded
   const nftImages = [
-    '/nft-images/1.jpg',
-    '/nft-images/2.jpg', 
-    '/nft-images/3.jpg',
-    '/nft-images/4.jpg',
-    '/nft-images/5.jpg',
-    '/nft-images/6.jpg',
-    '/nft-images/7.jpg',
-    '/nft-images/8.jpg',
-    '/nft-images/9.jpg',
-    '/nft-images/10.jpg',
-    '/nft-images/11.jpg',
-    '/nft-images/12.jpg',
-    '/nft-images/13.jpg',
-    '/nft-images/14.jpg',
-    '/nft-images/15.jpg',
-    '/nft-images/16.jpg',
-    '/nft-images/17.jpg',
-    '/nft-images/18.jpg',
-    '/nft-images/19.jpg',
-    '/nft-images/20.jpg'
+    "/nft-images/1.jpg",
+    "/nft-images/2.jpg",
+    "/nft-images/3.jpg",
+    "/nft-images/4.jpg",
+    "/nft-images/5.jpg",
+    "/nft-images/6.jpg",
+    "/nft-images/7.jpg",
+    "/nft-images/8.jpg",
+    "/nft-images/9.jpg",
+    "/nft-images/10.jpg",
+    "/nft-images/11.jpg",
+    "/nft-images/12.jpg",
+    "/nft-images/13.jpg",
+    "/nft-images/14.jpg",
+    "/nft-images/15.jpg",
+    "/nft-images/16.jpg",
+    "/nft-images/17.jpg",
+    "/nft-images/18.jpg",
+    "/nft-images/19.jpg",
+    "/nft-images/20.jpg",
   ];
 
   const handleMint = () => {
@@ -58,11 +58,11 @@ export default function Home() {
   const decrementIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const incrementQuantity = useCallback(() => {
-    setQuantity(prev => prev < maxQuantity ? prev + 1 : prev);
+    setQuantity((prev) => (prev < maxQuantity ? prev + 1 : prev));
   }, [maxQuantity]);
 
   const decrementQuantity = useCallback(() => {
-    setQuantity(prev => prev > 1 ? prev - 1 : prev);
+    setQuantity((prev) => (prev > 1 ? prev - 1 : prev));
   }, []);
 
   const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -105,12 +105,10 @@ export default function Home() {
       {/* Navigation */}
       <nav className="pt-6 pb-2">
         <div className="max-w-6xl mx-auto px-4 flex justify-between items-center">
-          <div className="text-2xl font-bold text-nazar-deep">
-            🧿 Eye of Nazar
-          </div>
+          <div className="text-2xl font-bold text-nazar-deep">🧿 Malocchio</div>
           <div className="flex items-center gap-4">
             <Button
-              onClick={() => window.open('https://opensea.io', '_blank')}
+              onClick={() => window.open("https://opensea.io", "_blank")}
               className="bg-blue-100 hover:bg-blue-200 text-blue-600 font-medium transition-all duration-200"
               data-testid="button-opensea-collection"
             >
@@ -251,12 +249,13 @@ export default function Home() {
                       onError={(e) => {
                         // Fallback to placeholder if image doesn't exist
                         const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
+                        target.style.display = "none";
                         const parent = target.parentElement;
-                        if (parent && !parent.querySelector('.placeholder')) {
-                          const placeholder = document.createElement('div');
-                          placeholder.className = 'placeholder w-full h-full flex items-center justify-center text-nazar-blue text-4xl font-bold';
-                          placeholder.textContent = '🧿';
+                        if (parent && !parent.querySelector(".placeholder")) {
+                          const placeholder = document.createElement("div");
+                          placeholder.className =
+                            "placeholder w-full h-full flex items-center justify-center text-nazar-blue text-4xl font-bold";
+                          placeholder.textContent = "🧿";
                           parent.appendChild(placeholder);
                         }
                       }}
@@ -273,18 +272,18 @@ export default function Home() {
       {/* Footer */}
       <footer className="py-8 text-center text-gray-500 text-sm">
         <div className="flex justify-center gap-6 mb-4">
-          <a 
-            href="https://warpcast.com" 
-            target="_blank" 
+          <a
+            href="https://warpcast.com"
+            target="_blank"
             rel="noopener noreferrer"
             className="text-gray-500 hover:text-purple-600 transition-colors duration-200"
             data-testid="link-farcaster"
           >
             <SiFarcaster className="w-6 h-6" />
           </a>
-          <a 
-            href="https://x.com" 
-            target="_blank" 
+          <a
+            href="https://x.com"
+            target="_blank"
             rel="noopener noreferrer"
             className="text-gray-500 hover:text-black transition-colors duration-200"
             data-testid="link-twitter"
