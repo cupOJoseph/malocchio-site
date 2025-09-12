@@ -5,7 +5,6 @@ import { Plus, Minus } from "lucide-react";
 import { FaXTwitter } from "react-icons/fa6";
 import { SiFarcaster } from "react-icons/si";
 import useEmblaCarousel from "embla-carousel-react";
-import Autoplay from "embla-carousel-autoplay";
 
 export default function Home() {
   const [mintCount, setMintCount] = useState(1247);
@@ -13,15 +12,13 @@ export default function Home() {
   const maxMints = 3333;
   const pricePerNft = 0.008;
 
-  // Carousel setup with autoplay
-  const [emblaRef] = useEmblaCarousel(
-    { 
-      loop: true,
-      align: 'center',
-      containScroll: 'trimSnaps'
-    },
-    [Autoplay({ delay: 3000, stopOnInteraction: false })]
-  );
+  // Carousel setup
+  const [emblaRef] = useEmblaCarousel({
+    loop: true,
+    align: 'center',
+    containScroll: 'trimSnaps',
+    dragFree: true
+  });
 
   // Sample NFT images - replace with actual images when uploaded
   const nftImages = [
