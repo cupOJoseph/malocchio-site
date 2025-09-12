@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 import { WalletButton } from "@/components/wallet-button";
 import { Button } from "@/components/ui/button";
 import { Plus, Minus } from "lucide-react";
@@ -21,18 +21,49 @@ export default function Home() {
   const remainingNfts = maxMints - mintCount;
   const maxQuantity = remainingNfts;
 
-  const incrementQuantity = () => {
-    if (quantity < maxQuantity) setQuantity(prev => prev + 1);
-  };
+  const incrementIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const decrementIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  const decrementQuantity = () => {
-    if (quantity > 1) setQuantity(prev => prev - 1);
-  };
+  const incrementQuantity = useCallback(() => {
+    setQuantity(prev => prev < maxQuantity ? prev + 1 : prev);
+  }, [maxQuantity]);
+
+  const decrementQuantity = useCallback(() => {
+    setQuantity(prev => prev > 1 ? prev - 1 : prev);
+  }, []);
 
   const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(e.target.value) || 1;
     if (value >= 1 && value <= maxQuantity) {
       setQuantity(value);
+    }
+  };
+
+  const startIncrementing = () => {
+    incrementQuantity();
+    incrementIntervalRef.current = setInterval(() => {
+      incrementQuantity();
+    }, 100);
+  };
+
+  const startDecrementing = () => {
+    decrementQuantity();
+    decrementIntervalRef.current = setInterval(() => {
+      decrementQuantity();
+    }, 100);
+  };
+
+  const stopIncrementing = () => {
+    if (incrementIntervalRef.current) {
+      clearInterval(incrementIntervalRef.current);
+      incrementIntervalRef.current = null;
+    }
+  };
+
+  const stopDecrementing = () => {
+    if (decrementIntervalRef.current) {
+      clearInterval(decrementIntervalRef.current);
+      decrementIntervalRef.current = null;
     }
   };
 
@@ -103,10 +134,12 @@ export default function Home() {
         <div className="text-center mb-6">
           <div className="flex items-center justify-center gap-6 mb-4">
             <Button
-              onClick={decrementQuantity}
+              onMouseDown={startDecrementing}
+              onMouseUp={stopDecrementing}
+              onMouseLeave={stopDecrementing}
               size="lg"
               variant="outline"
-              className="rounded-full w-12 h-12 p-0 border-2 border-nazar-blue text-nazar-blue hover:bg-nazar-tint hover:scale-110 transition-all duration-200 shadow-md"
+              className="rounded-full w-12 h-12 p-0 border-2 border-nazar-blue text-nazar-blue hover:bg-nazar-tint hover:scale-110 transition-all duration-200 shadow-md select-none"
               disabled={quantity <= 1}
               data-testid="button-decrease-quantity"
             >
@@ -127,10 +160,12 @@ export default function Home() {
               </div>
             </div>
             <Button
-              onClick={incrementQuantity}
+              onMouseDown={startIncrementing}
+              onMouseUp={stopIncrementing}
+              onMouseLeave={stopIncrementing}
               size="lg"
               variant="outline"
-              className="rounded-full w-12 h-12 p-0 border-2 border-nazar-blue text-nazar-blue hover:bg-nazar-tint hover:scale-110 transition-all duration-200 shadow-md"
+              className="rounded-full w-12 h-12 p-0 border-2 border-nazar-blue text-nazar-blue hover:bg-nazar-tint hover:scale-110 transition-all duration-200 shadow-md select-none"
               disabled={quantity >= maxQuantity}
               data-testid="button-increase-quantity"
             >
