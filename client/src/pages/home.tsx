@@ -114,12 +114,7 @@ export default function Home() {
           <img
             src="/malocchio.png"
             alt="Malocchio Logo"
-            className="mx-auto block"
-            style={{
-              width: "33vw",
-              maxWidth: "300px",
-              height: "auto"
-            }}
+            className="mx-2 max-w-1/3"
           />
         </div>
       </header>
@@ -269,9 +264,7 @@ export default function Home() {
             <u>Alex</u>
           </a>
         </p>
-        <p className="mt-2">
-          Built with mystical energy and modern technology.
-        </p>
+        <p className="mt-2">built with ancient wisdom and modern technology.</p>
       </footer>
     </div>
   );
