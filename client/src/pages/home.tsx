@@ -2,6 +2,8 @@ import { useState } from "react";
 import { WalletButton } from "@/components/wallet-button";
 import { Button } from "@/components/ui/button";
 import { Plus, Minus } from "lucide-react";
+import { FaXTwitter } from "react-icons/fa6";
+import { SiFarcaster } from "react-icons/si";
 
 export default function Home() {
   const [mintCount, setMintCount] = useState(1247);
@@ -167,6 +169,26 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="py-8 text-center text-gray-500 text-sm">
+        <div className="flex justify-center gap-6 mb-4">
+          <a 
+            href="https://warpcast.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-gray-500 hover:text-purple-600 transition-colors duration-200"
+            data-testid="link-farcaster"
+          >
+            <SiFarcaster className="w-6 h-6" />
+          </a>
+          <a 
+            href="https://x.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-gray-500 hover:text-black transition-colors duration-200"
+            data-testid="link-twitter"
+          >
+            <FaXTwitter className="w-6 h-6" />
+          </a>
+        </div>
         <p>
           Hand Drawn by{" "}
           <a href="https://x.com/justalexty">
