@@ -3,7 +3,7 @@ import { WalletButton } from "@/components/wallet-button";
 import { Button } from "@/components/ui/button";
 import { Plus, Minus } from "lucide-react";
 import { FaXTwitter } from "react-icons/fa6";
-import { SiFarcaster } from "react-icons/si";
+import { SiFarcaster, SiEthereum } from "react-icons/si";
 import useEmblaCarousel from "embla-carousel-react";
 
 export default function Home() {
@@ -303,6 +303,15 @@ export default function Home() {
             data-testid="link-twitter"
           >
             <FaXTwitter className="w-6 h-6" />
+          </a>
+          <a
+            href="https://arbiscan.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-500 hover:text-blue-600 transition-colors duration-200"
+            data-testid="link-etherscan"
+          >
+            <SiEthereum className="w-6 h-6" />
           </a>
         </div>
         <p>
