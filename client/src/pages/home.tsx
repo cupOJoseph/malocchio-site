@@ -19,7 +19,7 @@ export default function Home() {
   };
 
   const remainingNfts = maxMints - mintCount;
-  const maxQuantity = Math.min(remainingNfts, 20); // Cap at 20 per transaction
+  const maxQuantity = remainingNfts;
 
   const incrementQuantity = () => {
     if (quantity < maxQuantity) setQuantity(prev => prev + 1);
