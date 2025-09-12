@@ -1,15 +1,51 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { WalletButton } from "@/components/wallet-button";
 import { Button } from "@/components/ui/button";
 import { Plus, Minus } from "lucide-react";
 import { FaXTwitter } from "react-icons/fa6";
 import { SiFarcaster } from "react-icons/si";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 
 export default function Home() {
   const [mintCount, setMintCount] = useState(1247);
   const [quantity, setQuantity] = useState(5);
   const maxMints = 3333;
   const pricePerNft = 0.008;
+
+  // Carousel setup with autoplay
+  const [emblaRef] = useEmblaCarousel(
+    { 
+      loop: true,
+      align: 'center',
+      containScroll: 'trimSnaps'
+    },
+    [Autoplay({ delay: 3000, stopOnInteraction: false })]
+  );
+
+  // Sample NFT images - replace with actual images when uploaded
+  const nftImages = [
+    '/nft-images/1.jpg',
+    '/nft-images/2.jpg', 
+    '/nft-images/3.jpg',
+    '/nft-images/4.jpg',
+    '/nft-images/5.jpg',
+    '/nft-images/6.jpg',
+    '/nft-images/7.jpg',
+    '/nft-images/8.jpg',
+    '/nft-images/9.jpg',
+    '/nft-images/10.jpg',
+    '/nft-images/11.jpg',
+    '/nft-images/12.jpg',
+    '/nft-images/13.jpg',
+    '/nft-images/14.jpg',
+    '/nft-images/15.jpg',
+    '/nft-images/16.jpg',
+    '/nft-images/17.jpg',
+    '/nft-images/18.jpg',
+    '/nft-images/19.jpg',
+    '/nft-images/20.jpg'
+  ];
 
   const handleMint = () => {
     // Mock minting functionality
@@ -202,6 +238,38 @@ export default function Home() {
               ? "All Eye of Nazar NFTs have been minted! Thank you for your support."
               : "Connect your wallet to mint your Eye of Nazar NFT. Each token grants access to exclusive mystical protection."}
           </p>
+        </div>
+
+        {/* NFT Carousel */}
+        <div className="w-full max-w-6xl mx-auto mt-12 mb-8">
+          <div className="embla overflow-hidden" ref={emblaRef}>
+            <div className="embla__container flex">
+              {nftImages.map((image, index) => (
+                <div key={index} className="embla__slide flex-shrink-0 mr-8">
+                  <div className="w-48 h-48 bg-gradient-to-br from-nazar-tint to-white rounded-2xl shadow-lg border-2 border-nazar-blue/20 overflow-hidden">
+                    <img
+                      src={image}
+                      alt={`Eye of Nazar NFT #${index + 1}`}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        // Fallback to placeholder if image doesn't exist
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const parent = target.parentElement;
+                        if (parent && !parent.querySelector('.placeholder')) {
+                          const placeholder = document.createElement('div');
+                          placeholder.className = 'placeholder w-full h-full flex items-center justify-center text-nazar-blue text-4xl font-bold';
+                          placeholder.textContent = '🧿';
+                          parent.appendChild(placeholder);
+                        }
+                      }}
+                      data-testid={`nft-image-${index + 1}`}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </main>
 
