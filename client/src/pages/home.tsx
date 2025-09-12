@@ -106,6 +106,7 @@ export default function Home() {
               Malocchio
             </h1>
             <img src="/malocchio.png" alt="Malocchio Logo" className="mx-2" />
+            {/* max width 50%*/}
           </div>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Malocchio is a collection of 3,333 unique Eyes of Nazar from
