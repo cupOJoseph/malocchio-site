@@ -210,7 +210,7 @@ export default function Home() {
 {mintCount >= maxMints ? "Sold Out" : "Mint"}
           </button>
           <p className="text-sm text-gray-500 mt-2 font-medium">
-            0.009 ETH each
+            0.0009 ETH each
           </p>
         </div>
 
