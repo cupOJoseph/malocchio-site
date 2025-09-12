@@ -82,7 +82,6 @@ export default function Home() {
       {/* Navigation */}
       <nav className="pt-6 pb-2">
         <div className="max-w-6xl mx-auto px-4 flex justify-between items-center">
-          <div className="text-2xl font-bold text-nazar-deep">🧿 Malocchio</div>
           <div className="flex items-center gap-4">
             <Button
               onClick={() => window.open("https://opensea.io", "_blank")}
@@ -112,14 +111,30 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center justify-center px-4 py-8">
-        {/* Malocchio Image */}
-        <div className="mb-8 relative flex justify-center">
-          <img
-            src="/malocchio.png"
-            alt="Malocchio - Eye of Nazar"
-            className="w-80 h-80 md:w-96 md:h-96 object-contain"
-            data-testid="malocchio-image"
-          />
+        {/* Custom Eye of Nazar */}
+        <div
+          className="mb-8 relative"
+          style={{
+            height: "75vmin",
+            width: "75vmin",
+            maxHeight: "25%",
+            maxWidth: "350px",
+          }}
+        >
+          <div className="eye-nazar-navy">
+            <div className="eye-nazar-highlight"></div>
+            <div className="eye-nazar-navy-shape"></div>
+          </div>
+          <div className="eye-nazar-white">
+            <div className="eye-nazar-white-shape"></div>
+          </div>
+          <div className="eye-nazar-blue">
+            <div className="eye-nazar-blue-shape"></div>
+          </div>
+          <div className="eye-nazar-black">
+            <div className="eye-nazar-black-shape"></div>
+          </div>
+          <div id="fa" style={{ height: "100%", width: "100%" }}></div>
         </div>
 
         {/* Quantity Selector */}
