@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Plus, Minus } from "lucide-react";
 import { FaXTwitter } from "react-icons/fa6";
 import { SiFarcaster, SiEthereum } from "react-icons/si";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 
 export default function Home() {
   const [mintCount, setMintCount] = useState(1247);
