@@ -11,29 +11,14 @@ export default function Home() {
   const maxMints = 3333;
   const pricePerNft = 0.009;
 
-
   // Sample NFT images - replace with actual images when uploaded
   const nftImages = [
-    "/nft-images/1.jpg",
+    "/malocchio.png",
     "/nft-images/2.jpg",
-    "/nft-images/3.jpg",
+    "malocchio.png",
     "/nft-images/4.jpg",
-    "/nft-images/5.jpg",
+    "malocchio.png",
     "/nft-images/6.jpg",
-    "/nft-images/7.jpg",
-    "/nft-images/8.jpg",
-    "/nft-images/9.jpg",
-    "/nft-images/10.jpg",
-    "/nft-images/11.jpg",
-    "/nft-images/12.jpg",
-    "/nft-images/13.jpg",
-    "/nft-images/14.jpg",
-    "/nft-images/15.jpg",
-    "/nft-images/16.jpg",
-    "/nft-images/17.jpg",
-    "/nft-images/18.jpg",
-    "/nft-images/19.jpg",
-    "/nft-images/20.jpg",
   ];
 
   const handleMint = () => {
@@ -119,38 +104,22 @@ export default function Home() {
           </h1>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Malocchio is a collection of 3,333 unique Eyes of Nazar from
-            bonafide Mediterraneans CupoGiuseppe and Alex. Protect your wallet
-            by minting an authentic onchain evil eye today.
+            bonafide Mediterraneans Giuseppe and Alex. Protect your wallet by
+            minting an authentic onchain evil eye today.
           </p>
         </div>
       </header>
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center justify-center px-4 py-8">
-        {/* Custom Eye of Nazar */}
-        <div
-          className="mb-8 relative"
-          style={{
-            height: "75vmin",
-            width: "75vmin",
-            maxHeight: "25%",
-            maxWidth: "350px",
-          }}
-        >
-          <div className="eye-nazar-navy">
-            <div className="eye-nazar-highlight"></div>
-            <div className="eye-nazar-navy-shape"></div>
-          </div>
-          <div className="eye-nazar-white">
-            <div className="eye-nazar-white-shape"></div>
-          </div>
-          <div className="eye-nazar-blue">
-            <div className="eye-nazar-blue-shape"></div>
-          </div>
-          <div className="eye-nazar-black">
-            <div className="eye-nazar-black-shape"></div>
-          </div>
-          <div id="fa" style={{ height: "100%", width: "100%" }}></div>
+        {/* Malocchio Image */}
+        <div className="mb-8 relative flex justify-center">
+          <img
+            src="/malocchio.png"
+            alt="Malocchio - Eye of Nazar"
+            className="w-80 h-80 md:w-96 md:h-96 object-contain"
+            data-testid="malocchio-image"
+          />
         </div>
 
         {/* Quantity Selector */}
@@ -200,7 +169,7 @@ export default function Home() {
             disabled={mintCount >= maxMints}
             data-testid="button-mint"
           >
-{mintCount >= maxMints ? "Sold Out" : "Mint"}
+            {mintCount >= maxMints ? "Sold Out" : "Mint"}
           </button>
           <p className="text-sm text-gray-500 mt-2 font-medium">
             0.0009 ETH each
@@ -219,7 +188,6 @@ export default function Home() {
             </span>
             <p className="text-sm text-gray-500 mt-1 font-medium">MINTED</p>
           </div>
-
         </div>
 
         {/* NFT Carousel */}
@@ -227,7 +195,11 @@ export default function Home() {
           <div className="marquee overflow-hidden">
             <div className="marquee__track">
               {[...nftImages, ...nftImages].map((image, index) => (
-                <div key={index} className="marquee__item mr-8" aria-hidden={index >= nftImages.length ? "true" : undefined}>
+                <div
+                  key={index}
+                  className="marquee__item mr-8"
+                  aria-hidden={index >= nftImages.length ? "true" : undefined}
+                >
                   <div className="w-48 h-48 bg-gradient-to-br from-nazar-tint to-white rounded-2xl shadow-lg border-2 border-nazar-blue/20 overflow-hidden">
                     <img
                       src={image}
