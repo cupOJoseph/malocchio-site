@@ -8,31 +8,16 @@ import useEmblaCarousel from "embla-carousel-react";
 
 export default function Home() {
   const [mintCount, setMintCount] = useState(1247);
-  const [quantity, setQuantity] = useState(5);
+  const [quantity, setQuantity] = useState(3);
   const maxMints = 3333;
-  const pricePerNft = 0.008;
+  const pricePerNft = 0.009;
 
-  // Carousel setup with auto-advance
-  const [emblaRef, emblaApi] = useEmblaCarousel({
+  // Simplified carousel setup
+  const [emblaRef] = useEmblaCarousel({
     loop: true,
     align: "start",
-    containScroll: "trimSnaps",
     dragFree: false,
   });
-
-  // Auto-advance carousel functionality  
-  useEffect(() => {
-    if (!emblaApi) return;
-
-    const autoAdvance = () => {
-      emblaApi.scrollPrev(); // Move to previous (right direction visually)
-    };
-
-    // Start auto-advancing after component mounts
-    const interval = setInterval(autoAdvance, 1500); // Move every 1.5 seconds
-
-    return () => clearInterval(interval);
-  }, [emblaApi]);
 
   // Sample NFT images - replace with actual images when uploaded
   const nftImages = [
@@ -222,10 +207,10 @@ export default function Home() {
             disabled={mintCount >= maxMints}
             data-testid="button-mint"
           >
-            🧿 {mintCount >= maxMints ? "Sold Out" : "Mint Your Nazar"} 🧿
+{mintCount >= maxMints ? "Sold Out" : "Mint"}
           </button>
           <p className="text-sm text-gray-500 mt-2 font-medium">
-            {pricePerNft} ETH each
+            0.009 ETH each
           </p>
         </div>
 
@@ -242,11 +227,6 @@ export default function Home() {
             <p className="text-sm text-gray-500 mt-1 font-medium">MINTED</p>
           </div>
 
-          <p className="text-sm text-gray-500 mt-4 max-w-md mx-auto">
-            {mintCount >= maxMints
-              ? "All Eye of Nazar NFTs have been minted! Thank you for your support."
-              : "Connect your wallet to mint your Eye of Nazar NFT. Each token grants access to exclusive mystical protection."}
-          </p>
         </div>
 
         {/* NFT Carousel */}

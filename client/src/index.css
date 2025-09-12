@@ -314,11 +314,20 @@
 
 .embla__container {
   display: flex;
-  transition: transform 0.5s ease-in-out;
+  animation: carousel-slide 30s linear infinite;
 }
 
 .embla__slide {
   flex: 0 0 auto;
   min-width: 0;
   padding-left: 1rem;
+}
+
+@keyframes carousel-slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
