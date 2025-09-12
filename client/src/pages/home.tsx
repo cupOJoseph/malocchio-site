@@ -105,14 +105,22 @@ export default function Home() {
             <h1 className="text-4xl md:text-6xl font-bold gradient-text mb-4">
               Malocchio
             </h1>
-            <img src="/malocchio.png" alt="Malocchio Logo" className="mx-2" />
-            {/* max width 50%*/}
           </div>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Malocchio is a collection of 3,333 unique Eyes of Nazar from
             bonafide Mediterraneans Giuseppe and Alex. Protect yourself by
             minting an authentic onchain nazar.
           </p>
+          <img
+            src="/malocchio.png"
+            alt="Malocchio Logo"
+            className="mx-auto block"
+            style={{
+              width: "33vw",
+              maxWidth: "300px",
+              height: "auto"
+            }}
+          />
         </div>
       </header>
 
