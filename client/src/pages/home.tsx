@@ -102,14 +102,10 @@ export default function Home() {
       <header className="pt-4 pb-4">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <div className="mb-4">
-            <img
-              src="/malocchio.png"
-              alt="Malocchio Logo"
-              className="mx-auto"
-            />
             <h1 className="text-4xl md:text-6xl font-bold gradient-text mb-4">
               Malocchio
             </h1>
+            <img src="/malocchio.png" alt="Malocchio Logo" className="mx-2" />
           </div>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Malocchio is a collection of 3,333 unique Eyes of Nazar from
@@ -121,32 +117,6 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center justify-center px-4 py-8">
-        {/* Custom Eye of Nazar */}
-        <div
-          className="mb-8 relative"
-          style={{
-            height: "75vmin",
-            width: "75vmin",
-            maxHeight: "25%",
-            maxWidth: "350px",
-          }}
-        >
-          <div className="eye-nazar-navy">
-            <div className="eye-nazar-highlight"></div>
-            <div className="eye-nazar-navy-shape"></div>
-          </div>
-          <div className="eye-nazar-white">
-            <div className="eye-nazar-white-shape"></div>
-          </div>
-          <div className="eye-nazar-blue">
-            <div className="eye-nazar-blue-shape"></div>
-          </div>
-          <div className="eye-nazar-black">
-            <div className="eye-nazar-black-shape"></div>
-          </div>
-          <div id="fa" style={{ height: "100%", width: "100%" }}></div>
-        </div>
-
         {/* Quantity Selector */}
         <div className="text-center mb-6">
           <div className="flex items-center justify-center gap-6 mb-4">
