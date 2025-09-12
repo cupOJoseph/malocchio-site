@@ -18,8 +18,11 @@ export default function Home() {
     }
   };
 
+  const remainingNfts = maxMints - mintCount;
+  const maxQuantity = Math.min(remainingNfts, 20); // Cap at 20 per transaction
+
   const incrementQuantity = () => {
-    if (quantity < 10) setQuantity(prev => prev + 1);
+    if (quantity < maxQuantity) setQuantity(prev => prev + 1);
   };
 
   const decrementQuantity = () => {
@@ -28,7 +31,7 @@ export default function Home() {
 
   const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(e.target.value) || 1;
-    if (value >= 1 && value <= 10) {
+    if (value >= 1 && value <= maxQuantity) {
       setQuantity(value);
     }
   };
@@ -98,35 +101,40 @@ export default function Home() {
 
         {/* Quantity Selector */}
         <div className="text-center mb-6">
-          <div className="flex items-center justify-center gap-4 mb-4">
+          <div className="flex items-center justify-center gap-6 mb-4">
             <Button
               onClick={decrementQuantity}
-              size="sm"
+              size="lg"
               variant="outline"
-              className="rounded-full w-8 h-8 p-0 border-nazar-blue text-nazar-blue hover:bg-nazar-tint"
+              className="rounded-full w-12 h-12 p-0 border-2 border-nazar-blue text-nazar-blue hover:bg-nazar-tint hover:scale-110 transition-all duration-200 shadow-md"
               disabled={quantity <= 1}
               data-testid="button-decrease-quantity"
             >
-              <Minus className="w-4 h-4" />
+              <Minus className="w-5 h-5" />
             </Button>
-            <input
-              type="number"
-              value={quantity}
-              onChange={handleQuantityChange}
-              min="1"
-              max="10"
-              className="w-16 text-center py-2 px-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-nazar-blue focus:border-transparent font-medium"
-              data-testid="input-quantity"
-            />
+            <div className="relative">
+              <input
+                type="number"
+                value={quantity}
+                onChange={handleQuantityChange}
+                min="1"
+                max={maxQuantity}
+                className="w-24 h-16 text-center text-2xl font-bold py-4 px-4 rounded-2xl border-2 border-nazar-blue focus:ring-4 focus:ring-nazar-tint focus:border-nazar-deep transition-all duration-200 shadow-lg bg-white"
+                data-testid="input-quantity"
+              />
+              <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs text-gray-500 font-medium">
+                max {maxQuantity}
+              </div>
+            </div>
             <Button
               onClick={incrementQuantity}
-              size="sm"
+              size="lg"
               variant="outline"
-              className="rounded-full w-8 h-8 p-0 border-nazar-blue text-nazar-blue hover:bg-nazar-tint"
-              disabled={quantity >= 10}
+              className="rounded-full w-12 h-12 p-0 border-2 border-nazar-blue text-nazar-blue hover:bg-nazar-tint hover:scale-110 transition-all duration-200 shadow-md"
+              disabled={quantity >= maxQuantity}
               data-testid="button-increase-quantity"
             >
-              <Plus className="w-4 h-4" />
+              <Plus className="w-5 h-5" />
             </Button>
           </div>
         </div>
