@@ -20,12 +20,12 @@ export default function Home() {
     dragFree: false,
   });
 
-  // Auto-advance carousel functionality
+  // Auto-advance carousel functionality  
   useEffect(() => {
     if (!emblaApi) return;
 
     const autoAdvance = () => {
-      emblaApi.scrollNext();
+      emblaApi.scrollPrev(); // Move to previous (right direction visually)
     };
 
     // Start auto-advancing after component mounts
