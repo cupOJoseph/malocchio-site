@@ -1,39 +1,34 @@
-import { useState, useEffect } from "react";
-import { emojiBlast, emojiBlasts } from "emoji-blast";
+import { useState } from "react";
 import { WalletButton } from "@/components/wallet-button";
+import { Button } from "@/components/ui/button";
+import { Plus, Minus } from "lucide-react";
 
 export default function Home() {
   const [mintCount, setMintCount] = useState(1247);
+  const [quantity, setQuantity] = useState(5);
   const maxMints = 3333;
+  const pricePerNft = 0.008;
 
-  // Global click handler for emoji explosion effect
-  useEffect(() => {
-    const handleGlobalClick = (e: MouseEvent) => {
-      emojiBlast({
-        emojis: ["🧿"],
-        position: {
-          x: e.clientX,
-          y: e.clientY,
-        },
-      });
-    };
-
-    document.addEventListener("click", handleGlobalClick);
-    return () => document.removeEventListener("click", handleGlobalClick);
-  }, []);
-
-  const handleMint = (e: React.MouseEvent) => {
+  const handleMint = () => {
     // Mock minting functionality
-    if (mintCount < maxMints) {
-      setMintCount((prev) => prev + 1);
+    if (mintCount + quantity <= maxMints) {
+      setMintCount((prev) => prev + quantity);
     }
+  };
 
-    // Create continuous emoji blasts for mint button
-    const { cancel } = emojiBlasts({
-      emojis: ["🧿", "✨", "🌟", "💎", "🔮", "🎉", "⭐"],
-      interval: 40,
-    });
-    setTimeout(cancel, 3000);
+  const incrementQuantity = () => {
+    if (quantity < 10) setQuantity(prev => prev + 1);
+  };
+
+  const decrementQuantity = () => {
+    if (quantity > 1) setQuantity(prev => prev - 1);
+  };
+
+  const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = parseInt(e.target.value) || 1;
+    if (value >= 1 && value <= 10) {
+      setQuantity(value);
+    }
   };
 
   return (
@@ -44,7 +39,16 @@ export default function Home() {
           <div className="text-2xl font-bold text-nazar-deep">
             🧿 Eye of Nazar
           </div>
-          <WalletButton />
+          <div className="flex items-center gap-4">
+            <Button
+              onClick={() => window.open('https://opensea.io', '_blank')}
+              className="bg-blue-100 hover:bg-blue-200 text-blue-600 font-medium transition-all duration-200"
+              data-testid="button-opensea-collection"
+            >
+              OpenSea Collection
+            </Button>
+            <WalletButton />
+          </div>
         </div>
       </nav>
 
@@ -52,12 +56,12 @@ export default function Home() {
       <header className="pt-4 pb-4">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold gradient-text mb-4">
-            Eye of Nazar NFTs 🧿
+            Malocchio 🧿
           </h1>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Discover the mystical power of protection with our exclusive
-            collection of 3,333 unique Eye of Nazar NFTs. Each piece carries
-            ancient wisdom and modern artistry.
+            Malocchio is a collection of 3,333 unique Eyes of Nazar from
+            bonafide Mediterraneans CupoGiuseppe and Alex. Protect your wallet
+            by minting an authentic onchain evil eye today.
           </p>
         </div>
       </header>
@@ -90,15 +94,54 @@ export default function Home() {
           <div id="fa" style={{ height: "100%", width: "100%" }}></div>
         </div>
 
+        {/* Quantity Selector */}
+        <div className="text-center mb-6">
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <Button
+              onClick={decrementQuantity}
+              size="sm"
+              variant="outline"
+              className="rounded-full w-8 h-8 p-0 border-nazar-blue text-nazar-blue hover:bg-nazar-tint"
+              disabled={quantity <= 1}
+              data-testid="button-decrease-quantity"
+            >
+              <Minus className="w-4 h-4" />
+            </Button>
+            <input
+              type="number"
+              value={quantity}
+              onChange={handleQuantityChange}
+              min="1"
+              max="10"
+              className="w-16 text-center py-2 px-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-nazar-blue focus:border-transparent font-medium"
+              data-testid="input-quantity"
+            />
+            <Button
+              onClick={incrementQuantity}
+              size="sm"
+              variant="outline"
+              className="rounded-full w-8 h-8 p-0 border-nazar-blue text-nazar-blue hover:bg-nazar-tint"
+              disabled={quantity >= 10}
+              data-testid="button-increase-quantity"
+            >
+              <Plus className="w-4 h-4" />
+            </Button>
+          </div>
+        </div>
+
         {/* Mint Button Below Eye */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-4">
           <button
             onClick={handleMint}
             className="bg-gradient-to-r from-nazar-deep to-nazar-blue hover:from-nazar-blue hover:to-nazar-light text-white font-bold py-4 px-12 md:py-5 md:px-16 rounded-2xl text-lg md:text-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg active:scale-95 relative overflow-hidden"
             disabled={mintCount >= maxMints}
+            data-testid="button-mint"
           >
             🧿 {mintCount >= maxMints ? "Sold Out" : "Mint Your Nazar"} 🧿
           </button>
+          <p className="text-sm text-gray-500 mt-2 font-medium">
+            {pricePerNft} ETH each
+          </p>
         </div>
 
         {/* Mint Info Section */}
@@ -117,7 +160,7 @@ export default function Home() {
           <p className="text-sm text-gray-500 mt-4 max-w-md mx-auto">
             {mintCount >= maxMints
               ? "All Eye of Nazar NFTs have been minted! Thank you for your support."
-              : "Connect your wallet to mint your Eye of Nazar NFT. Each token grants access to exclusive mystical benefits."}
+              : "Connect your wallet to mint your Eye of Nazar NFT. Each token grants access to exclusive mystical protection."}
           </p>
         </div>
       </main>
