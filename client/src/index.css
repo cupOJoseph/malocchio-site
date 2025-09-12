@@ -306,28 +306,34 @@
   }
 }
 
-/* Embla Carousel Styles */
-.embla {
-  overflow: hidden;
-  background: transparent;
+/* CSS-only Marquee Carousel */
+.marquee {
+  position: relative;
 }
 
-.embla__container {
+.marquee__track {
   display: flex;
-  animation: carousel-slide 30s linear infinite;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-right 60s linear infinite;
 }
 
-.embla__slide {
+.marquee__item {
   flex: 0 0 auto;
-  min-width: 0;
-  padding-left: 1rem;
 }
 
-@keyframes carousel-slide {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
+@keyframes marquee-right {
+  from {
     transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track {
+    animation: none;
+    transform: translateX(0);
   }
 }

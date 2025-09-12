@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Plus, Minus } from "lucide-react";
 import { FaXTwitter } from "react-icons/fa6";
 import { SiFarcaster, SiEthereum } from "react-icons/si";
-import useEmblaCarousel from "embla-carousel-react";
 
 export default function Home() {
   const [mintCount, setMintCount] = useState(1247);
@@ -12,12 +11,6 @@ export default function Home() {
   const maxMints = 3333;
   const pricePerNft = 0.009;
 
-  // Simplified carousel setup
-  const [emblaRef] = useEmblaCarousel({
-    loop: true,
-    align: "start",
-    dragFree: false,
-  });
 
   // Sample NFT images - replace with actual images when uploaded
   const nftImages = [
@@ -231,14 +224,14 @@ export default function Home() {
 
         {/* NFT Carousel */}
         <div className="w-full max-w-6xl mx-auto mt-12 mb-8">
-          <div className="embla overflow-hidden" ref={emblaRef}>
-            <div className="embla__container flex">
-              {nftImages.map((image, index) => (
-                <div key={index} className="embla__slide flex-shrink-0 mr-8">
+          <div className="marquee overflow-hidden">
+            <div className="marquee__track">
+              {[...nftImages, ...nftImages].map((image, index) => (
+                <div key={index} className="marquee__item mr-8" aria-hidden={index >= nftImages.length ? "true" : undefined}>
                   <div className="w-48 h-48 bg-gradient-to-br from-nazar-tint to-white rounded-2xl shadow-lg border-2 border-nazar-blue/20 overflow-hidden">
                     <img
                       src={image}
-                      alt={`Eye of Nazar NFT #${index + 1}`}
+                      alt={`Eye of Nazar NFT #${(index % nftImages.length) + 1}`}
                       className="w-full h-full object-cover"
                       onError={(e) => {
                         // Fallback to placeholder if image doesn't exist
@@ -253,7 +246,7 @@ export default function Home() {
                           parent.appendChild(placeholder);
                         }
                       }}
-                      data-testid={`nft-image-${index + 1}`}
+                      data-testid={`nft-image-${(index % nftImages.length) + 1}`}
                     />
                   </div>
                 </div>
