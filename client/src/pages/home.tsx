@@ -109,8 +109,8 @@ export default function Home() {
           </div>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Malocchio is a collection of 3,333 unique Eyes of Nazar from
-            bonafide Mediterraneans Giuseppe and Alex. Protect your wallet by
-            minting an authentic onchain evil eye today.
+            bonafide Mediterraneans Giuseppe and Alex. Protect yourself by
+            minting an authentic onchain nazar.
           </p>
         </div>
       </header>
@@ -236,15 +236,6 @@ export default function Home() {
             <SiFarcaster className="w-6 h-6" />
           </a>
           <a
-            href="https://x.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-500 hover:text-black transition-colors duration-200"
-            data-testid="link-twitter"
-          >
-            <FaXTwitter className="w-6 h-6" />
-          </a>
-          <a
             href="https://arbiscan.io"
             target="_blank"
             rel="noopener noreferrer"
@@ -252,6 +243,15 @@ export default function Home() {
             data-testid="link-etherscan"
           >
             <SiEthereum className="w-6 h-6" />
+          </a>
+          <a
+            href="https://x.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-500 hover:text-black transition-colors duration-200"
+            data-testid="link-twitter"
+          >
+            <FaXTwitter className="w-6 h-6" />
           </a>
         </div>
         <p>
