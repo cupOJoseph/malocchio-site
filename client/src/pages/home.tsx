@@ -115,6 +115,7 @@ export default function Home() {
             src="/malocchio.png"
             alt="Malocchio Logo"
             className="mx-2 max-w-1/3"
+            
           />
         </div>
       </header>
