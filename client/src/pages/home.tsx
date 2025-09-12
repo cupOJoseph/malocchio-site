@@ -82,6 +82,7 @@ export default function Home() {
       {/* Navigation */}
       <nav className="pt-6 pb-2">
         <div className="max-w-6xl mx-auto px-4 flex justify-between items-center">
+          <div className="text-2xl font-bold text-nazar-deep"></div>
           <div className="flex items-center gap-4">
             <Button
               onClick={() => window.open("https://opensea.io", "_blank")}
@@ -98,9 +99,16 @@ export default function Home() {
       {/* Header */}
       <header className="pt-4 pb-4">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold gradient-text mb-4">
-            Malocchio 🧿
-          </h1>
+          <div className="mb-4">
+            <img
+              src="/malocchio.png"
+              alt="Malocchio Logo"
+              className="mx-auto"
+            />
+            <h1 className="text-4xl md:text-6xl font-bold gradient-text mb-4">
+              Malocchio
+            </h1>
+          </div>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Malocchio is a collection of 3,333 unique Eyes of Nazar from
             bonafide Mediterraneans Giuseppe and Alex. Protect your wallet by
