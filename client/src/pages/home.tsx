@@ -145,20 +145,15 @@ export default function Home() {
             >
               <Minus className="w-5 h-5" />
             </Button>
-            <div className="relative">
-              <input
-                type="number"
-                value={quantity}
-                onChange={handleQuantityChange}
-                min="1"
-                max={maxQuantity}
-                className="w-24 h-16 text-center text-2xl font-bold py-4 px-4 rounded-2xl border-2 border-nazar-blue focus:ring-4 focus:ring-nazar-tint focus:border-nazar-deep transition-all duration-200 shadow-lg bg-white"
-                data-testid="input-quantity"
-              />
-              <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs text-gray-500 font-medium">
-                max {maxQuantity}
-              </div>
-            </div>
+            <input
+              type="number"
+              value={quantity}
+              onChange={handleQuantityChange}
+              min="1"
+              max={maxQuantity}
+              className="w-24 h-16 text-center text-2xl font-bold py-4 px-4 rounded-2xl border-2 border-nazar-blue focus:ring-4 focus:ring-nazar-tint focus:border-nazar-deep transition-all duration-200 shadow-lg bg-white"
+              data-testid="input-quantity"
+            />
             <Button
               onMouseDown={startIncrementing}
               onMouseUp={stopIncrementing}
