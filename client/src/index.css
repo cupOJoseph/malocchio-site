@@ -305,3 +305,20 @@
     left: -100%;
   }
 }
+
+/* Embla Carousel Styles */
+.embla {
+  overflow: hidden;
+  background: transparent;
+}
+
+.embla__container {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.embla__slide {
+  flex: 0 0 auto;
+  min-width: 0;
+  padding-left: 1rem;
+}

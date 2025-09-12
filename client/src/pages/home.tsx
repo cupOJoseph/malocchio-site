@@ -12,13 +12,27 @@ export default function Home() {
   const maxMints = 3333;
   const pricePerNft = 0.008;
 
-  // Carousel setup
-  const [emblaRef] = useEmblaCarousel({
+  // Carousel setup with auto-advance
+  const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
-    align: "center",
+    align: "start",
     containScroll: "trimSnaps",
-    dragFree: true,
+    dragFree: false,
   });
+
+  // Auto-advance carousel functionality
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    const autoAdvance = () => {
+      emblaApi.scrollNext();
+    };
+
+    // Start auto-advancing after component mounts
+    const interval = setInterval(autoAdvance, 1500); // Move every 1.5 seconds
+
+    return () => clearInterval(interval);
+  }, [emblaApi]);
 
   // Sample NFT images - replace with actual images when uploaded
   const nftImages = [
